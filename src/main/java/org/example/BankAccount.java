@@ -13,32 +13,16 @@ public class BankAccount {
     }
 
     public void deposit(double depositAmount) {
-        balance += depositAmount;
+        balance = balance + depositAmount;
         System.out.println("Deposited €"+depositAmount+". New balance €"+balance);
     }
 
     public void withdraw(double withdrawalAmount){
         if ((balance-withdrawalAmount) >= 0){
-            balance -= withdrawalAmount;
+            balance = balance - withdrawalAmount;
             System.out.println("Withdrawal successful. New balance €"+balance);
         } else {
             System.out.println("Insufficient funds.");
         }
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
