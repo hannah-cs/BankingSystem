@@ -8,24 +8,22 @@ public class Customer implements Runnable {
             Scanner scanner = new Scanner(System.in);
         Thread depositThread = new Thread(() -> {
             try {
-                System.out.println("Enter deposit amount");
-                double deposit = scanner.nextDouble();
-                balance =+ deposit;
-                System.out.println("Processing deposit...");
-                Thread.sleep(1000);
-                System.out.println("Deposit successful. New balance: €"+balance);
+                System.out.println("Enter account number");
+                int accountId = scanner.nextInt();
+                for (BankAccount bankAccount : BankAccount.allAccounts) {
+                    if (bankAccount.getId() == accountId) {
+                        Thread.sleep(1000);
+                        System.out.println("Enter deposit amount");
+                        double deposit = scanner.nextDouble();
+                        System.out.println("Processing deposit...");
+                        bankAccount.deposit(deposit);
+                    }
+                }
             } catch (InterruptedException e) {
                 System.err.println("Thread was interrupted");
             }
         });
             depositThread.start();
     }
-    public static void main(String[] args) {
-        Customer customer = new Customer();
-        Thread customerThread = new Thread(customer);
-        customerThread.start();
-        Customer customer2 = new Customer();
-        Thread customerThread2 = new Thread(customer2);
-        customerThread2.start();
-    }
+
 }
