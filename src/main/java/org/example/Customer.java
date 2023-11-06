@@ -2,14 +2,14 @@ package org.example;
 import java.util.Scanner;
 
 public class Customer implements Runnable {
-        public int balance;
+        public double balance;
         @Override
         public void run() {
             Scanner scanner = new Scanner(System.in);
         Thread depositThread = new Thread(() -> {
             try {
                 System.out.println("Enter deposit amount");
-                int deposit = scanner.nextInt();
+                double deposit = scanner.nextDouble();
                 balance =+ deposit;
                 System.out.println("Processing deposit...");
                 Thread.sleep(1000);
