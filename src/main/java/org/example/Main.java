@@ -3,7 +3,7 @@ import java.util.concurrent.*;
 
 public class Main {
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newCachedThreadPool();
         BankAccount sharedAccount = new BankAccount(1234);
         Customer customer = new Customer(sharedAccount);
         Customer customer2 = new Customer(sharedAccount);
